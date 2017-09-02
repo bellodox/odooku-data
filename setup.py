@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
     name='odooku-data',
     version='10.0.1005',
-    url='https://github.com/adaptivdesign/odooku-data',
+    url='https://github.com/odooku/odooku-data',
     author='Raymond Reggers - Adaptiv Design',
     author_email='raymond@adaptiv.nl',
     description=('Odooku Data'),
