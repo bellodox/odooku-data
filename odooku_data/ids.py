@@ -1,7 +1,7 @@
 def hash_id(id):
     if isinstance(id, dict):
         return hash(tuple(sorted(
-            (k, hash_id(v)) for (k, v) in id.iteritems()
+            (k, hash_id(v)) for (k, v) in id.items()
         )))
     return id
 

@@ -8,7 +8,7 @@ class DataConfig(object):
         self.includes = includes or []
         self.models = {
             k: ModelConfig(**v) for
-            (k, v) in (models or {}).iteritems()
+            (k, v) in (models or {}).items()
         }
 
     @classmethod

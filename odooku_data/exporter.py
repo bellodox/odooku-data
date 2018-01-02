@@ -62,7 +62,7 @@ class Exporter(object):
                 # Get models to export
                 models = [
                     model_name
-                    for model_name in context.serializers.iterkeys()
+                    for model_name in context.serializers.keys()
                     if not (match_any(model_name, self._config.excludes) or
                         (self._config.includes and not
                         match_any(model_name, self._config.includes))

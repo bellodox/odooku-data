@@ -64,7 +64,7 @@ class DependencyGraph(OrderedDict):
 
     def invert(self):
         g = DependencyGraph()
-        for (node, edges) in self.iteritems():
+        for (node, edges) in self.items():
             for edge in edges:
                 g[edge].add(node)
 
@@ -73,11 +73,11 @@ class DependencyGraph(OrderedDict):
     def sort(self):
 
         incomming = OrderedDict([
-            (node, list(edges)) for node, edges in self.iteritems()
+            (node, list(edges)) for node, edges in self.items()
         ])
 
         # Try to output nodes in initial order
-        nodes = [node for node in incomming.iterkeys()]
+        nodes = [node for node in incomming.keys()]
         # Keep a stack in order to detect cyclic dependencies
 
         stack = []
@@ -108,7 +108,7 @@ class DependencyGraph(OrderedDict):
             if result is None:
                 result = {}
 
-            fields = nk and serializer.nk or serializer.fields.iterkeys()
+            fields = nk and serializer.nk or serializer.fields.keys()
             for field_name in fields:
                 field = serializer.fields[field_name]
                 if isinstance(field, ManyToOneSerializer):
@@ -123,7 +123,7 @@ class DependencyGraph(OrderedDict):
                     if field.relation not in result:
                         find_dependencies(relation_serializer, nk=True, result=result)
 
-            return list(result.itervalues())
+            return list(result.values())
 
         for model_name in models:
             g[model_name] = find_dependencies(serializers[model_name])

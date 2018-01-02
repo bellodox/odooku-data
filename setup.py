@@ -11,11 +11,8 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     zip_safe=False,
-    namespace_packages=[
-        'odooku_commands'
-    ],
     install_requires=[
-        'odooku>=10.0.0,<11.0.0',
+        'odooku>=11.0.0,<12.0.0',
         'ijson==2.3'
     ],
     classifiers=[

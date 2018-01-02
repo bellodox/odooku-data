@@ -31,8 +31,8 @@ def export(ctx, db_name, strict, link, config_file=None):
         ctx.obj['config']
     )
 
-    from odoo.modules.registry import RegistryManager
-    registry = RegistryManager.get(db_name)
+    from odoo.modules.registry import Registry
+    registry = Registry(db_name)
 
     from odooku_data.exporter import factory
     from odooku_data.config import DataConfig
@@ -67,8 +67,8 @@ def import_(ctx, db_name, fake, strict, config_file):
         ctx.obj['config']
     )
 
-    from odoo.modules.registry import RegistryManager
-    registry = RegistryManager.get(db_name)
+    from odoo.modules.registry import Registry
+    registry = Registry(db_name)
     from odooku_data.importer import Importer
     from odooku_data.config import DataConfig
     importer = Importer(

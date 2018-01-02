@@ -29,7 +29,7 @@ class SerializationContext(object):
                     self.env[model_name], # use iterkeys instead of env iteritems for Odoo 9 compatibiltiy,
                     config=self.config
                 ))
-                for model_name in self.env.registry.iterkeys()
+                for model_name in self.env.registry.keys()
                 if not any([
                     # use getattr for Odoo 9 compatibility
                     getattr(self.env[model_name], attr, False)

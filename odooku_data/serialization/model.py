@@ -47,7 +47,7 @@ class ModelSerializer(object):
 
     def serialize(self, record, context, fields=None):
         result = {}
-        for field_name in (fields or self.fields.iterkeys()):
+        for field_name in (fields or self.fields.keys()):
             field = self.fields[field_name]
             result[field_name] = field.serialize(record, context)
         return result
@@ -102,7 +102,7 @@ class ModelSerializer(object):
 
     def deserialize(self, values, context):
         result = {}
-        for field_name, value in values.iteritems():
+        for field_name, value in values.items():
             if field_name not in self.fields:
                 if context.strict:
                     raise Exception("Missing field %s " % field_name)
@@ -122,7 +122,7 @@ class ModelSerializer(object):
             raise LinkNotFound("No link resolved for %s %s" % (self.model_name, id))
 
         nk = {}
-        for field_name, value in id.iteritems():
+        for field_name, value in id.items():
             field = self.fields[field_name]
             nk[field_name] = field.deserialize(id, context)
 
@@ -131,7 +131,7 @@ class ModelSerializer(object):
 
         lookup = [
             (k, '=', v)
-            for (k, v) in nk.iteritems()
+            for (k, v) in nk.items()
         ]
 
         model = context.env[self.model_name].with_context(active_test=False)
@@ -186,7 +186,7 @@ class ModelSerializer(object):
 
             return True
 
-        for field_name, field in model.fields_get().iteritems():
+        for field_name, field in model.fields_get().items():
             if include_field(field_name, field):
                 field_config = (model_config and model_config.fields.get(field_name)) or {}
                 field_cls = field_types.get(field_config.get('type') or field['type'], FieldSerializer)
