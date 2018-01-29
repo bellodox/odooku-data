@@ -13,4 +13,4 @@ def is_nk(id):
     return isinstance(id, dict)
 
 def is_link(id):
-    return isinstance(id, basestring)
+    return isinstance(id, str)
